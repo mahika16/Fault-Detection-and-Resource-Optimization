@@ -33,29 +33,29 @@ app=shinyApp(
                           #for the main working space having different tabs for different outputs
                           mainPanel(h3("Output"),tabsetPanel(type="tab",
                                                              
-                                                             #for the forecasts                                  
-                                                             tabPanel("Forecasts",value=1,tableOutput("forecastedresults"),downloadButton("forecast","Download"),h5("The duration is in minutes")),
-                                                             
-                                                             #for the plots
-                                                             tabPanel("Plots for Alarms",value=2,h4("Total Alarms:"),tableOutput("total_alarms"),h4("Top Contributors"),
-                                                                      tableOutput("contributors"),h5("Plot for lac and alarm combination"),plotOutput("plot")),
-                                                             
-                                                             #for the engineer recommendation
-                                                             tabPanel("Recommendation",value=3,h4("Recommendation of Engineers"),tableOutput("recommendation"),downloadButton("engineers","Download")
-                                                                      ,h5(" '-' indicates that these no of enggineers in that particular lac are extra and can be shifted to another lac")
-                                                                      ,h5("The duration is in minutes")),
-                                                             
-                                                             #for the map representation
-                                                             tabPanel("Map Representation for severity according to total counts per LAC",value=4,leafletOutput("map",width="100%",height=1350),
-                                                                      h4("lacs in critical region:"),verbatimTextOutput("lacs_in_critical"),h4("lacs in moderately severe region")
-                                                                      ,verbatimTextOutput("lacs_in_moderate")),
-                                                             
-                                                             #for the barplots
-                                                             tabPanel("Barplots for describing Alarm constitution per LAC",value=5,h4("Stacked Barplots for Lac wise distribution of alarms"),
-                                                                      plotlyOutput("barplot")),id="tabselected"))))),
-  
-  
-  
+                                     #for the forecasts                                  
+                                     tabPanel("Forecasts",value=1,tableOutput("forecastedresults"),downloadButton("forecast","Download"),h5("The duration is in minutes")),
+
+                                     #for the plots
+                                     tabPanel("Plots for Alarms",value=2,h4("Total Alarms:"),tableOutput("total_alarms"),h4("Top Contributors"),
+                                              tableOutput("contributors"),h5("Plot for lac and alarm combination"),plotOutput("plot")),
+
+                                     #for the engineer recommendation
+                                     tabPanel("Recommendation",value=3,h4("Recommendation of Engineers"),tableOutput("recommendation"),downloadButton("engineers","Download")
+                                              ,h5(" '-' indicates that these no of enggineers in that particular lac are extra and can be shifted to another lac")
+                                              ,h5("The duration is in minutes")),
+
+                                     #for the map representation
+                                     tabPanel("Map Representation for severity according to total counts per LAC",value=4,leafletOutput("map",width="100%",height=1350),
+                                              h4("lacs in critical region:"),verbatimTextOutput("lacs_in_critical"),h4("lacs in moderately severe region")
+                                              ,verbatimTextOutput("lacs_in_moderate")),
+
+                                     #for the barplots
+                                     tabPanel("Barplots for describing Alarm constitution per LAC",value=5,h4("Stacked Barplots for Lac wise distribution of alarms"),
+                                              plotlyOutput("barplot")),id="tabselected"))))),
+
+
+
   #the backend
   server<- shinyServer(function(input,output,session){
     
